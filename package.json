@@ -1,10 +1,12 @@
 {
   "name": "react-use-shared-state",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "communication, sharing state between components",
   "module": "lib/index.es.js",
   "main": "lib/index.cjs.js",
   "types": "lib",
+  "repository": "Foreinyel/react-use-shared-state",
+  "homepage": "https://github.com/Foreinyel/react-use-shared-state",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --emitDeclarationOnly && rollup -c",
