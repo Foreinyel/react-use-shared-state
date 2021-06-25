@@ -1,6 +1,6 @@
 {
   "name": "react-use-shared-state",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "module": "lib/index.es.js",
   "main": "lib/index.cjs.js",
@@ -10,12 +10,14 @@
     "build": "tsc --emitDeclarationOnly && rollup -c",
     "release": "standard-version"
   },
+  "files": [
+    "lib",
+    "src"
+  ],
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "babel-plugin-transform-class-properties": "^6.24.1"
-  },
+  "author": "Jimmy Shi",
+  "license": "MIT",
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "7.13.8",
     "@babel/preset-env": "7.13.8",
@@ -33,7 +35,8 @@
     "rollup-plugin-ignore": "1.0.9",
     "rollup-plugin-terser": "7.0.2",
     "typescript": "^4.3.4",
-    "standard-version": "^9.3.0"
+    "standard-version": "^9.3.0",
+    "babel-plugin-transform-class-properties": "^6.24.1"
   },
   "peerDependencies": {
     "@types/react": "^16.9.49",
