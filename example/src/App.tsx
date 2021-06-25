@@ -8,15 +8,18 @@ function ChildApp() {
   const [count, setCount] = useSharedState("countState");
   return (
     <p>
-      <button type="button" onClick={() => setCount(count + 1)}>
-        count is: {count}
+      <button
+        type="button"
+        onClick={() => setCount({ value: count.value + 1 })}
+      >
+        count is: {count.value}
       </button>
     </p>
   );
 }
 
 function App() {
-  const [count, setCount] = useSharedState("countState", 0);
+  const [count, setCount] = useSharedState("countState", { value: 0 });
 
   return (
     <div className="App">
@@ -24,8 +27,11 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
         <p>
-          <button type="button" onClick={() => setCount(count + 1)}>
-            count is: {count}
+          <button
+            type="button"
+            onClick={() => setCount({ value: count.value + 1 })}
+          >
+            count is: {count.value}
           </button>
         </p>
         <ChildApp />
