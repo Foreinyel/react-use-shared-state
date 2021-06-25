@@ -40,3 +40,9 @@ const ComponentB = () => {
   )
 }
 ```
+
+## example
+
+```console
+cd example && yarn dev
+```
