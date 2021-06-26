@@ -16,7 +16,11 @@
     "lib",
     "src"
   ],
-  "keywords": [],
+  "keywords": [
+    "useSharedState",
+    "communication between components",
+    "share state between components"
+  ],
   "author": "Jimmy Shi",
   "license": "MIT",
   "dependencies": {},
