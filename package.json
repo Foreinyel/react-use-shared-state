@@ -9,7 +9,7 @@
   "homepage": "https://github.com/Foreinyel/react-use-shared-state",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc --emitDeclarationOnly && rollup -c",
+    "build": "npx rimraf lib && npx mkdirp lib && tsc --emitDeclarationOnly && rollup -c",
     "release": "standard-version"
   },
   "files": [
@@ -42,7 +42,9 @@
     "rollup-plugin-terser": "7.0.2",
     "typescript": "^4.3.4",
     "standard-version": "^9.3.0",
-    "babel-plugin-transform-class-properties": "^6.24.1"
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "mkdirp": "^1.0.4",
+    "rimraf": "^3.0.2"
   },
   "peerDependencies": {
     "@types/react": "^16.9.49",
