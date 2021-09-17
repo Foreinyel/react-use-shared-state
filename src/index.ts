@@ -70,8 +70,6 @@ export const useSharedState = (
 ) => {
   const [value, setValue] = useState(getState(stateName, initValue));
 
-  // const value = getState(stateName, initValue);
-
   const [uuid] = useState(Symbol(stateName));
 
   const subject = getSubject(stateName);
@@ -82,13 +80,22 @@ export const useSharedState = (
     } as StateDTO);
   }, []);
 
-  const setAndPublishValue = (newValue: StateValue) => {
-    setValue(newValue);
+  const publishValue = (newValue: StateValue) => {
     setState(stateName, newValue);
     subject.next({
       value: newValue,
       uuid,
     });
+  };
+
+  const setAndPublishValue = (newValue: StateValue) => {
+    setValue(newValue);
+    publishValue(newValue);
+    // setState(stateName, newValue);
+    // subject.next({
+    //   value: newValue,
+    //   uuid,
+    // });
   };
 
   useEffect(() => {
@@ -101,7 +108,7 @@ export const useSharedState = (
     });
   }, []);
 
-  return [value, setAndPublishValue];
+  return [value, setAndPublishValue, publishValue];
 };
 
 export const getSharedState = (stateName: StateName) => getState(stateName);
