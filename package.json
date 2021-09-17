@@ -1,6 +1,6 @@
 {
   "name": "react-use-shared-state",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "communication, sharing state between components",
   "module": "lib/index.es.js",
   "main": "lib/index.cjs.js",
