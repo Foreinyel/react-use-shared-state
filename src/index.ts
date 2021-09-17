@@ -57,6 +57,13 @@ const getState: (stateName: StateName, initValue?: StateValue) => StateValue = (
   return StatesMap.get(stateName);
 };
 
+const setState: (stateName: StateName, newValue: StateValue) => void = (
+  stateName: StateName,
+  initValue?: StateValue
+) => {
+  StatesMap.set(stateName, initValue);
+};
+
 export const useSharedState = (
   stateName: StateName,
   initValue?: StateValue
@@ -77,6 +84,7 @@ export const useSharedState = (
 
   const setAndPublishValue = (newValue: StateValue) => {
     setValue(newValue);
+    setState(stateName, newValue);
     subject.next({
       value: newValue,
       uuid,
