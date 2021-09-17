@@ -24,7 +24,7 @@ class Subject<T> {
   };
 }
 
-type StateName = string;
+type StateName = any;
 
 type StateValue = any;
 
@@ -57,7 +57,10 @@ const getState: (stateName: StateName, initValue?: StateValue) => StateValue = (
   return StatesMap.get(stateName);
 };
 
-const useSharedState = (stateName: StateName, initValue?: StateValue) => {
+export const useSharedState = (
+  stateName: StateName,
+  initValue?: StateValue
+) => {
   const [value, setValue] = useState(getState(stateName, initValue));
 
   // const value = getState(stateName, initValue);
@@ -92,5 +95,7 @@ const useSharedState = (stateName: StateName, initValue?: StateValue) => {
 
   return [value, setAndPublishValue];
 };
+
+export const getSharedState = (stateName: StateName) => getState(stateName);
 
 export default useSharedState;
