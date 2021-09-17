@@ -51,7 +51,7 @@ const getState: (stateName: StateName, initValue?: StateValue) => StateValue = (
   stateName: StateName,
   initValue?: StateValue
 ) => {
-  if (initValue !== undefined) {
+  if (initValue !== undefined && !!StatesMap.get(stateName)) {
     StatesMap.set(stateName, initValue);
   }
   return StatesMap.get(stateName);
