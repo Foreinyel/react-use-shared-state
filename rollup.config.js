@@ -64,4 +64,4 @@ const unpkg = {
   ],
 };
 
-export default [main, unpkg];
+export default [main];
