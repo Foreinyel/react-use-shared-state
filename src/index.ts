@@ -64,7 +64,7 @@ const setState: (stateName: StateName, newValue: StateValue) => void = (
   StatesMap.set(stateName, initValue);
 };
 
-export const usePubState = (stateName: StateName) => {
+export const usePubState = (stateName: StateName, initValue?: StateValue) => {
   const [uuid] = useState(Symbol(stateName));
 
   const subject = getSubject(stateName);
@@ -76,6 +76,12 @@ export const usePubState = (stateName: StateName) => {
       uuid,
     });
   };
+
+  useEffect(() => {
+    if (initValue) {
+      publishValue(initValue);
+    }
+  }, []);
 
   return [publishValue];
 };
