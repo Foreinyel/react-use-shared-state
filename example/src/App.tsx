@@ -2,19 +2,26 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 // import useSharedState from "react-use-shared-state";
-import useSharedState, { usePubState } from "../../src";
+import useSharedState, { usePubState, getSharedState } from "../../src";
 
 function ChildApp() {
-  // const [count, setCount] = useSharedState<{ value: number }>("countState");
-  const [count, setCount] = useSharedState("countState");
-  const [setOther] = usePubState("otherState");
+  const [count, setCount] = useSharedState<{ value: number }>("countState");
+
+  const [aa, setAA] = useSharedState("aa", 3);
+  const [setAAA] = usePubState("aaa");
+  const aaaa = getSharedState("aaaa");
+
+  const [bb, setBB] = useSharedState<number | null>("bb");
+  const [setBBB] = usePubState<number>("bbb");
+  const bbbb = getSharedState<string>("bbbb");
+
   return (
     <p>
       <button
         type="button"
-        onClick={() => setCount({ value: count.value + 1 })}
+        onClick={() => setCount({ value: count!.value + 1 })}
       >
-        count is: {count.value}
+        count is: {count?.value}
       </button>
     </p>
   );
@@ -31,9 +38,9 @@ function App() {
         <p>
           <button
             type="button"
-            onClick={() => setCount({ value: count.value + 1 })}
+            onClick={() => setCount({ value: count!.value + 1 })}
           >
-            count is: {count.value}
+            count is: {count?.value}
           </button>
         </p>
         <ChildApp />

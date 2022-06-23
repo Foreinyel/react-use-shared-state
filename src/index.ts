@@ -91,10 +91,13 @@ export function usePubState(stateName, initValue?) {
   return [publishValue];
 }
 
-function useSharedState(stateName: StateName): [any, (value: any) => void];
-function useSharedState<S>(
+function useSharedState<S = undefined>(
   stateName: StateName,
   initValue?: S
+): [S | undefined, (value: S) => void];
+function useSharedState<S>(
+  stateName: StateName,
+  initValue
 ): [S, (value: S) => void];
 function useSharedState(stateName, initValue?) {
   const [value, setValue] = useState(getState(stateName, initValue));
@@ -135,6 +138,10 @@ function useSharedState(stateName, initValue?) {
   return [value, setAndPublishValue];
 }
 
-export const getSharedState = (stateName: StateName) => getState(stateName);
+export function getSharedState(stateName: StateName): any;
+export function getSharedState<T>(stateName: StateName): T | undefined;
+export function getSharedState(stateName: StateName) {
+  return getState(stateName);
+}
 
 export default useSharedState;
