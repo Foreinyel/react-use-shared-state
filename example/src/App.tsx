@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 // import useSharedState from "react-use-shared-state";
-import useSharedState from "../../src";
+import useSharedState, { usePubState } from "../../src";
 
 function ChildApp() {
+  // const [count, setCount] = useSharedState<{ value: number }>("countState");
   const [count, setCount] = useSharedState("countState");
+  const [setOther] = usePubState("otherState");
   return (
     <p>
       <button

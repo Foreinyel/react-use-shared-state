@@ -47,7 +47,7 @@ const getSubject: (stateName: StateName) => Subject<StateDTO> = (
   }
   return _subject;
 };
-const getState: (stateName: StateName, initValue?: StateValue) => StateValue = (
+const getState: <T>(stateName: StateName, initValue?: T) => T = (
   stateName: StateName,
   initValue?: StateValue
 ) => {
@@ -64,7 +64,12 @@ const setState: (stateName: StateName, newValue: StateValue) => void = (
   StatesMap.set(stateName, initValue);
 };
 
-export const usePubState = (stateName: StateName, initValue?: StateValue) => {
+export function usePubState(stateName: StateName): [(value: any) => void];
+export function usePubState<T>(
+  stateName: StateName,
+  initValue?: T
+): [(value: T) => void];
+export function usePubState(stateName, initValue?) {
   const [uuid] = useState(Symbol(stateName));
 
   const subject = getSubject(stateName);
@@ -84,12 +89,14 @@ export const usePubState = (stateName: StateName, initValue?: StateValue) => {
   }, []);
 
   return [publishValue];
-};
+}
 
-export const useSharedState = (
+function useSharedState(stateName: StateName): [any, (value: any) => void];
+function useSharedState<S>(
   stateName: StateName,
-  initValue?: StateValue
-) => {
+  initValue?: S
+): [S, (value: S) => void];
+function useSharedState(stateName, initValue?) {
   const [value, setValue] = useState(getState(stateName, initValue));
 
   const [uuid] = useState(Symbol(stateName));
@@ -113,11 +120,6 @@ export const useSharedState = (
   const setAndPublishValue = (newValue: StateValue) => {
     setValue(newValue);
     publishValue(newValue);
-    // setState(stateName, newValue);
-    // subject.next({
-    //   value: newValue,
-    //   uuid,
-    // });
   };
 
   useEffect(() => {
@@ -131,7 +133,7 @@ export const useSharedState = (
   }, []);
 
   return [value, setAndPublishValue];
-};
+}
 
 export const getSharedState = (stateName: StateName) => getState(stateName);
 
