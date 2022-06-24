@@ -94,7 +94,7 @@ export function usePubState(stateName, initValue?) {
 function useSharedState<S = undefined>(
   stateName: StateName,
   initValue?: S
-): [S | undefined, (value: S) => void];
+): [S | undefined, (value: any) => void];
 function useSharedState<S>(
   stateName: StateName,
   initValue

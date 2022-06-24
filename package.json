@@ -49,5 +49,8 @@
   "peerDependencies": {
     "@types/react": "^16.9.49",
     "react": "16.13.1"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
