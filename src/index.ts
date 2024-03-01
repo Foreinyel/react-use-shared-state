@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-// import { Subject } from "rxjs";
+
+export * from "./closure";
 
 type Subscriber<T> = { next: (v: T) => void };
 
@@ -91,6 +92,12 @@ export function usePubState(stateName, initValue?) {
   return [publishValue];
 }
 
+/**
+ * @description use `createSharedStateContext` to separate state context.
+ * @param stateName
+ * @param initValue
+ * @returns
+ */
 function useSharedState<S = undefined>(
   stateName: StateName,
   initValue?: S
