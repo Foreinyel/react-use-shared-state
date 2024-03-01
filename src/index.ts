@@ -93,7 +93,7 @@ export function usePubState(stateName, initValue?) {
 }
 
 /**
- * @description use `createSharedStateContext` to separate state context.
+ * @deprecated use `createSharedStateContext` to separate state context.
  * @param stateName
  * @param initValue
  * @returns

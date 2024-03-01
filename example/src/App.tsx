@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 // import useSharedState from "react-use-shared-state";
-import useSharedState, { usePubState, getSharedState } from "../../src";
+import { createSharedStateContext } from "../../src";
+
+const { useSharedState, usePubState, getSharedState } =
+  createSharedStateContext();
 
 function ChildApp() {
   const [count, setCount] = useSharedState<{ value: number }>("countState");
