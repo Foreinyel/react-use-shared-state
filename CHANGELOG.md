@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/Foreinyel/react-use-shared-state/compare/v1.0.0...v1.1.0) (2024-07-25)
+
+
+### Features
+
+* createSharedStateContext ([93a1172](https://github.com/Foreinyel/react-use-shared-state/commit/93a1172b146ae3daa2c776b08fd6caeb7050f605))
+
 ### [0.0.19](https://github.com/Foreinyel/react-use-shared-state/compare/v0.0.18...v0.0.19) (2022-06-24)
 
 ### [0.0.18](https://github.com/Foreinyel/react-use-shared-state/compare/v0.0.17...v0.0.18) (2022-06-24)
