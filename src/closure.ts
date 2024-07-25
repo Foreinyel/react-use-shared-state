@@ -92,13 +92,12 @@ export function createSharedStateContext() {
     return [publishValue];
   }
 
+  function useSharedState<S = any>(
+    stateName: StateName
+  ): [S, (value: S) => void];
   function useSharedState<S = undefined>(
     stateName: StateName,
-    initValue?: S
-  ): [any, (value: any) => void];
-  function useSharedState<S>(
-    stateName: StateName,
-    initValue
+    initValue: S
   ): [S, (value: S) => void];
   function useSharedState(stateName, initValue?) {
     const [value, setValue] = useState(getState(stateName, initValue));
